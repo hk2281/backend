@@ -8,7 +8,7 @@ import { AssortmentDto } from './dto/assortment.dto';
 @Injectable()
 export class AssortmentService {
   constructor(
-    @InjectRepository(AssortmentRepository)
+    @InjectRepository(AssortmentEntity)
     private assortmentRepository: AssortmentRepository,
   ) {}
 

@@ -19,8 +19,8 @@ export class ProviderService {
     return list;
   }
   async findById(id: number): Promise<ProviderEntity> {
-    const provider = await this.providerRepository.findOne({
-      where: { id: id },
+    const provider = await this.providerRepository.findOneBy({
+      id: id,
     });
     if (!provider) {
       throw new NotFoundException({ message: 'provider not exist' });
@@ -28,8 +28,14 @@ export class ProviderService {
     return provider;
   }
   async findByName(name: string): Promise<ProviderEntity> {
-    const provider = await this.providerRepository.findOne({
-      where: { name: name },
+    const provider = await this.providerRepository.findOneBy({
+      name: name,
+    });
+    return provider ? provider : null;
+  }
+  async findByCounry(country: string): Promise<ProviderEntity> {
+    const provider = await this.providerRepository.findOneBy({
+      country: country,
     });
     return provider ? provider : null;
   }

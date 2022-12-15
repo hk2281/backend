@@ -1,9 +1,12 @@
 import { CategoryEntity } from 'src/category/category.entity';
 import { ProviderEntity } from 'src/provider/provider.entity';
+import { ShopEntity } from 'src/shop/shop.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -30,4 +33,7 @@ export class AssortmentEntity {
   )
   @JoinColumn({ name: 'categoryid' })
   category: CategoryEntity;
+  @ManyToMany(() => ShopEntity)
+  @JoinTable()
+  assortment: ShopEntity[];
 }

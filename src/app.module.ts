@@ -40,6 +40,7 @@ import { ShopModule } from './shop/shop.module';
     ProviderModule,
     CategoryModule,
     ShopModule,
+    Worker,
   ],
   controllers: [AppController],
   providers: [AppService],

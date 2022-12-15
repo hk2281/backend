@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ProviderEntity } from 'src/provider/provider.entity';
 import { AssortmentEntity } from './assortment.entity';
 import { AssortmentRepository } from './assortment.repository';
 import { AssortmentDto } from './dto/assortment.dto';

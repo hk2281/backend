@@ -1,3 +1,4 @@
+import { CategoryEntity } from 'src/category/category.entity';
 import { ProviderEntity } from 'src/provider/provider.entity';
 import {
   Column,
@@ -22,4 +23,11 @@ export class AssortmentEntity {
   )
   @JoinColumn({ name: 'providerid' })
   provider: ProviderEntity;
+  @ManyToOne(
+    () => CategoryEntity,
+    (category: CategoryEntity) => category.assortment_category,
+    { nullable: false, eager: true },
+  )
+  @JoinColumn({ name: 'categoryid' })
+  category: CategoryEntity;
 }

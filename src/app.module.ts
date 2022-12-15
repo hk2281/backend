@@ -12,6 +12,8 @@ import {
 } from './config/constants';
 import { AssortmentModule } from './assortment/assortment.module';
 import { ProviderModule } from './provider/provider.module';
+import { CategoryModule } from './category/category.module';
+import { ShopModule } from './shop/shop.module';
 
 @Module({
   imports: [
@@ -36,6 +38,8 @@ import { ProviderModule } from './provider/provider.module';
     }),
     AssortmentModule,
     ProviderModule,
+    CategoryModule,
+    ShopModule,
   ],
   controllers: [AppController],
   providers: [AppService],

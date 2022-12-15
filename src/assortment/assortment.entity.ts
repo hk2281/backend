@@ -20,6 +20,6 @@ export class AssortmentEntity {
     (provider: ProviderEntity) => provider.assortments,
     { nullable: false, eager: true },
   )
-  @JoinColumn({ name: 'provider_id' })
+  @JoinColumn({ name: 'providerid' })
   provider: ProviderEntity;
 }

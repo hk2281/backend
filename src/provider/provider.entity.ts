@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AssortmentEntity } from 'src/assortment/assortment.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'provider' })
 export class ProviderEntity {
@@ -10,4 +11,9 @@ export class ProviderEntity {
   contact: string;
   @Column({ type: 'varchar', length: 30, nullable: true })
   country: string;
+  @OneToMany(() => AssortmentEntity, (assortment) => assortment.provider, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  assortments: AssortmentEntity[];
 }

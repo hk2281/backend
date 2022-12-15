@@ -2,8 +2,8 @@ import { ProviderEntity } from 'src/provider/provider.entity';
 import {
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -15,7 +15,11 @@ export class AssortmentEntity {
   item: string;
   @Column()
   price: number;
-  @ManyToMany((type) => ProviderEntity)
-  @JoinTable()
-  providers: ProviderEntity[];
+  @ManyToOne(
+    () => ProviderEntity,
+    (provider: ProviderEntity) => provider.assortments,
+    { nullable: false, eager: true },
+  )
+  @JoinColumn({ name: 'provider_id' })
+  provider: ProviderEntity;
 }

@@ -40,19 +40,19 @@ export class AssortmentService {
     });
     return assortment_item ? assortment_item : null;
   }
-  async findByItemProvider(
-    providers: ProviderEntity,
-  ): Promise<AssortmentEntity> {
-    const assortment_item = await this.assortmentRepository.findOneBy({
-      providers: providers,
-    });
-    if (!assortment_item) {
-      throw new NotFoundException({
-        message: `item with provider ${providers.name} not exist`,
-      });
-    }
-    return assortment_item ? assortment_item : null;
-  }
+  // async findByItemProvider(
+  //   providers: ProviderEntity,
+  // ): Promise<AssortmentEntity> {
+  //   const assortment_item = await this.assortmentRepository.findOneBy({
+  //     providers: providers,
+  //   });
+  //   if (!assortment_item) {
+  //     throw new NotFoundException({
+  //       message: `item with provider ${providers.name} not exist`,
+  //     });
+  //   }
+  //   return assortment_item ? assortment_item : null;
+  // }
   async create(dto: AssortmentDto): Promise<any> {
     const assortment_item = this.assortmentRepository.create(dto);
     await this.assortmentRepository.save(assortment_item);
@@ -66,9 +66,9 @@ export class AssortmentService {
     dto.price
       ? (assortment_item.price = dto.price)
       : (assortment_item.price = assortment_item.price);
-    dto.providers
-      ? (assortment_item.providers = dto.providers)
-      : (assortment_item.providers = assortment_item.providers);
+    dto.provider
+      ? (assortment_item.provider = dto.provider)
+      : (assortment_item.provider = assortment_item.provider);
     await this.assortmentRepository.save(assortment_item);
     return { message: `assortment item ${assortment_item.item} update` };
   }

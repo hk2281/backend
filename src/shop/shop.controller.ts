@@ -19,19 +19,30 @@ export class ShopController {
   async getAll() {
     return await this.shopServise.getAll();
   }
+  @Get('createAssShop')
+  async getAllAssShop() {
+    return await this.shopServise.getAllAssShop();
+  }
   @Get(':id')
   async getOne(@Param('id', ParseIntPipe) id: number) {
     return await this.shopServise.findById(id);
+  }
+  @Post('/createAssShop')
+  async createAssShop(
+    @Body() createAssShop: { assortmentId: number; shopId: number },
+  ) {
+    await this.shopServise.createAssShop(createAssShop);
   }
   @Post()
   async create(@Body() dto: ShopDto) {
     return await this.shopServise.create(dto);
   }
+
   @Put(':id')
   async update(@Param('id', ParseIntPipe) id: number, @Body() dto: ShopDto) {
     return await this.shopServise.update(id, dto);
   }
-  @Delete('id')
+  @Delete(':id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     return await this.shopServise.delete(id);
   }

@@ -5,7 +5,6 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -33,7 +32,9 @@ export class AssortmentEntity {
   )
   @JoinColumn({ name: 'categoryid' })
   category: CategoryEntity;
-  @ManyToMany(() => ShopEntity)
-  @JoinTable()
-  assortment: ShopEntity[];
+  @ManyToMany(() => ShopEntity, (shop) => shop.assortments, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  shops?: ShopEntity[];
 }

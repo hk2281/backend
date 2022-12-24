@@ -37,6 +37,7 @@ export class CategoryService {
       ? (category.cat_title = dto.cat_title)
       : (category.cat_title = category.cat_title);
     // eslint-disable-next-line prettier/prettier
+    await this.categoryRepository.save(category);
     return { message: `category ${category.cat_title} update` };
   }
   async delete(id: number): Promise<any> {

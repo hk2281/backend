@@ -1,5 +1,13 @@
+import { AssortmentEntity } from 'src/assortment/assortment.entity';
 import { WorkerEntity } from 'src/worker/worker.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'shop' })
 export class ShopEntity {
@@ -14,4 +22,14 @@ export class ShopEntity {
     onUpdate: 'CASCADE',
   })
   worker: WorkerEntity;
+  @ManyToMany(() => AssortmentEntity, (assortment) => assortment.shops, {
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
+  })
+  @JoinTable({
+    name: 'assortment_shop',
+    joinColumn: { name: 'shopId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'assortmentId', referencedColumnName: 'id' },
+  })
+  assortments?: AssortmentEntity[];
 }

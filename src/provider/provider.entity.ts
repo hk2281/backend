@@ -12,8 +12,8 @@ export class ProviderEntity {
   @Column({ type: 'varchar', length: 30, nullable: true })
   country: string;
   @OneToMany(() => AssortmentEntity, (assortment) => assortment.provider, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
+    onDelete: 'NO ACTION',
+    onUpdate: 'NO ACTION',
   })
   assortments: AssortmentEntity[];
 }

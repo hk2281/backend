@@ -7,7 +7,7 @@ import { WorkerRepository } from './worker.repository';
 @Injectable()
 export class WorkerService {
   constructor(
-    @InjectRepository(WorkerRepository)
+    @InjectRepository(WorkerEntity)
     private workerRepository: WorkerRepository,
   ) {}
   async getAll(): Promise<WorkerEntity[]> {

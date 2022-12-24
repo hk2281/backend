@@ -23,6 +23,6 @@ export class WorkerEntity {
     nullable: false,
     eager: true,
   })
-  @JoinColumn({ name: 'providerid' })
+  @JoinColumn({ name: 'shopid' })
   shop: ShopEntity;
 }

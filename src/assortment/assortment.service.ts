@@ -68,6 +68,9 @@ export class AssortmentService {
     dto.provider
       ? (assortment_item.provider = dto.provider)
       : (assortment_item.provider = assortment_item.provider);
+    dto.category
+      ? (assortment_item.category = dto.category)
+      : (assortment_item.category = assortment_item.category);
     await this.assortmentRepository.save(assortment_item);
     return { message: `assortment item ${assortment_item.item} update` };
   }

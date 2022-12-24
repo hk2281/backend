@@ -34,7 +34,7 @@ export class ProviderController {
   ) {
     return await this.providerServise.update(id, dto);
   }
-  @Delete('id')
+  @Delete(':id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     return await this.providerServise.delete(id);
   }

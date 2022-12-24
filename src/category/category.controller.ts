@@ -34,7 +34,7 @@ export class CategoryController {
   ) {
     return await this.categoryServise.update(id, dto);
   }
-  @Delete('id')
+  @Delete(':id')
   async delete(@Param('id', ParseIntPipe) id: number) {
     return await this.categoryServise.delete(id);
   }
